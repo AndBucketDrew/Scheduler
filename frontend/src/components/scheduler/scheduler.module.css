@@ -1,0 +1,129 @@
+.modal {
+  position: fixed;
+  background: var(--base-clr); /* Changed from white to use base color */
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  width: 280px;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: var(--text-clr); /* Ensure text is readable on dark background */
+}
+
+.modal h4 {
+  margin-bottom: 8px;
+  color: var(--text-clr);
+}
+
+.modal p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: var(--secondary-text-clr); /* Lighter text for details */
+}
+
+.modalActions {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.modalActions button {
+  flex: 1;
+  padding: 6px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.deleteBtn {
+  background: var(--text-clr); /* #e6e6ef */
+  color: var(--base-clr); /* #11121a */
+  margin-right: 5px;
+}
+
+.editBtn {
+  background: var(--accent-clr); /* #5e63ff */
+  color: white;
+}
+
+.closeBtn {
+  background: var(--line-clr); /* #42434a */
+  color: var(--text-clr); /* #e6e6ef */
+  width: 100%;
+  margin-top: 10px;
+}
+
+.stickyFooter {
+  position: fixed;
+  bottom: 0;
+  background-color: var(--base-clr); /* #11121a */
+  padding: 10px 20px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  transform: translateY(100%); /* Start off-screen below the bottom */
+  animation: slideUp 0.3s ease-out forwards;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%); /* Start fully below the screen */
+  }
+  to {
+    transform: translateY(0); /* End at the bottom of the screen */
+  }
+}
+
+.leftSection {
+  flex: 1;
+  color: var(--text-clr); /* #e6e6ef */
+}
+
+.rightSection {
+  display: flex;
+  gap: 10px;
+  margin-right: 3rem;
+}
+
+.saveBtn {
+  background-color: var(--accent-clr); /* #5e63ff */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.saveBtn:hover {
+  background-color: #4b50cc;
+}
+
+.discardBtn {
+  background-color: var(--hover-clr); /* #222533 */
+  color: var(--text-clr); /* #e6e6ef */
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.discardBtn:hover {
+  background-color: #1a1e2b;
+}
+
+.noShiftsMessage {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: xx-large;
+  text-align: center;
+}

@@ -1,0 +1,98 @@
+.loginContainer {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--base-clr);
+  height: 100vh;
+  width: 100vw;
+  z-index: 10;
+}
+
+.loginCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1200px;
+  height: 700px; 
+  border-radius: 12px !important;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--base-clr);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  z-index: 20;
+}
+
+.loginLeft {
+  background: linear-gradient(to right, #0077b6, #00b4d8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%; 
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.loginRight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%; 
+  height: 100%;
+  background-color: #1a1e2b;
+}
+
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 400px;
+}
+
+.loginTitle {
+  text-align: center;
+  padding-bottom: 16px;
+  color: var(--text-clr);
+}
+
+.loginRight :global(.MuiTextField-root) {
+  margin-bottom: 16px;
+}
+
+.loginRight :global(.MuiOutlinedInput-root) {
+  background-color: var(--base-clr);
+  border-radius: 4px;
+  border: 1px solid var(--line-clr);
+}
+
+.loginRight :global(.MuiInputLabel-root) {
+  color: var(--secondary-text-clr);
+}
+
+.loginRight :global(.MuiOutlinedInput-input) {
+  color: var(--text-clr);
+}
+
+.loginRight :global(.MuiOutlinedInput-root.Mui-focused) {
+  border: 1px solid var(--accent-clr);
+}
+
+.loginRight :global(.MuiSvgIcon-root) {
+  color: var(--secondary-text-clr);
+}
+
+.loginRight :global(.MuiButton-root) {
+  background-color: var(--accent-clr);
+  color: var(--text-clr);
+  font-weight: bold;
+  border-radius: 4px;
+  padding: 12px;
+}
+
+.loginRight :global(.MuiButton-root:hover) {
+  background-color: #4a4ecc;
+}

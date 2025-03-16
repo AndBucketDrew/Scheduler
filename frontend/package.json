@@ -1,0 +1,50 @@
+{
+  "name": "my-react-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.4.0",
+    "@mui/material": "^6.3.1",
+    "@mui/x-date-pickers": "^7.27.0",
+    "@schedule-x/calendar": "^2.20.0",
+    "@schedule-x/drag-and-drop": "^2.21.0",
+    "@schedule-x/event-modal": "^2.21.0",
+    "@schedule-x/events-service": "^2.21.1",
+    "@schedule-x/react": "^2.19.0",
+    "@schedule-x/resize": "^2.21.0",
+    "@schedule-x/theme-default": "^2.20.0",
+    "axios": "^1.7.9",
+    "dayjs": "^1.11.13",
+    "jwt-decode": "^4.0.0",
+    "react": "^18.3.1",
+    "react-calendar": "^5.1.0",
+    "react-dom": "^18.3.1",
+    "react-pro-sidebar": "^1.1.0",
+    "react-router": "^7.1.1",
+    "react-router-dom": "^7.2.0",
+    "react-table": "^7.8.0",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "globals": "^15.14.0",
+    "sass-embedded": "^1.85.1",
+    "vite": "^6.0.5"
+  }
+}

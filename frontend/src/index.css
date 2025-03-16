@@ -1,0 +1,71 @@
+:root{
+  --base-clr: #11121a;
+  --line-clr: #42434a;
+  --hover-clr: #222533;
+  --text-clr: #e6e6ef;
+  --accent-clr: #5e63ff;
+  --secondary-text-clr: #b0b3c1;
+}
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+html{
+  line-height: 1.5rem;
+}
+body{
+  min-height: 100vh;
+  background-color: var(--base-clr);
+  color: var(--text-clr);
+  display: flex;
+  grid-template-columns: auto 1fr;
+  overflow-y: auto;
+}
+
+
+
+/* :global(.MuiTableContainer-root) {
+  background-color: var(--base-clr) !important;
+  border: 1px solid var(--line-clr) !important; 
+}
+
+:global(.MuiTable-root) {
+  background-color: var(--base-clr);
+
+}
+
+:global(.MuiTableCell-root) {
+  color: var(--text-clr) !important;
+  border-bottom: 1px solid var(--line-clr) !important;
+  background-color: var(--base-clr) !important;
+
+}
+
+:global(.MuiTableHead-root .MuiTableCell-root) {
+  background-color: var(--hover-clr) !important;
+
+  color: var(--text-clr) !important;
+  font-weight: 600 !important;
+}
+
+:global(.MuiTableBody-root .MuiTableCell-root) {
+  background-color: var(--base-clr) !important;
+
+}
+
+:global(.MuiTableRow-root) {
+  background-color: var(--base-clr) !important;
+
+}
+
+:global(.MuiTableRow-root:hover) {
+  background-color: var(--hover-clr) !important;
+}
+
+
+:global(.MuiDialog-paper) {
+  background-color: var(--base-clr) !important;
+  color: var(--text-clr) !important;
+  border: 1px solid var(--line-clr) !important;
+} */

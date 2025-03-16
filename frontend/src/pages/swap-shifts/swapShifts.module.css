@@ -1,0 +1,109 @@
+:global(body) {
+    margin: 0;
+    padding: 0;
+    background-color: var(--base-clr); 
+    font-family: 'Inter', sans-serif;
+  }
+  
+  /* Container to center the swap form on the page */
+  .swapShiftsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Form wrapper with dark background and shadow */
+  .swapShiftsForm {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    padding: 32px;
+    background-color: var(--hover-clr); /* --hover-clr */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Header styling for the form title */
+  .swapShiftsHeader {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent-clr); 
+    letter-spacing: 1px;
+  }
+  
+  /* Flexbox container for form elements */
+  .formBox {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  /* Styling for select fields */
+  .selectField {
+    margin-bottom: 16px;
+  }
+  
+  .selectField :global(.MuiOutlinedInput-root) {
+    background-color: var(--base-clr); 
+    border-radius: 4px;
+    border: 1px solid var(--line-clr); 
+    width: 100%;
+  }
+  
+  .selectField :global(.MuiSelect-select) {
+    color: var(--text-clr); 
+  }
+  
+  .selectField :global(.MuiInputLabel-root) {
+    color: var(--secondary-text-clr); 
+  }
+  
+  .selectField :global(.MuiOutlinedInput-root.Mui-focused) {
+    border: 1px solid var(--accent-clr); 
+  }
+  
+  /* Loading spinner styling */
+  .loadingSpinner {
+    display: block;
+    margin: 16px auto;
+    color: var(--accent-clr); 
+  }
+  
+  /* Submit button styling */
+  .swapShiftsButton {
+    margin-top: 24px;
+    width: 100%;
+    font-weight: bold;
+    background-color: var(--accent-clr); 
+    color: var(--text-clr); 
+    border-radius: 4px;
+    padding: 12px;
+  }
+  
+  .swapShiftsButton:hover {
+    background-color: #4a4ecc; /* Slightly darker shade of --accent-clr */
+  }
+  
+  /* Alert styling */
+  .alert {
+    margin-top: 16px;
+    background-color: var(--base-clr); 
+    color: var(--text-clr); 
+    border: 1px solid var(--line-clr); 
+  }
+  
+  /* Adjust alert severity colors */
+  .alert:global(.MuiAlert-standardSuccess) {
+    background-color: #1a3c34; /* Dark green for success */
+    color: var(--text-clr); 
+  }
+  
+  .alert:global(.MuiAlert-standardError) {
+    background-color: #3c1a1a; /* Dark red for error */
+    color: var(--text-clr); 
+  }
