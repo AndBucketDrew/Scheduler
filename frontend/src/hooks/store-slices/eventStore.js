@@ -149,7 +149,7 @@ const createEventSlice = (set) => ({
   // Action to update an event type by ID
   updateEventType: async (eventTypeId, eventTypeData) => {
     try {
-      set({ loading: true });  update
+      set({ loading: true });
       const token = sessionStorage.getItem("lh_token"); 
       const response = await fetchAPI({
         method: "put",
@@ -176,7 +176,7 @@ const createEventSlice = (set) => ({
   // Action to update a shift by ID
   updateShift: async (shiftId, shiftData) => {
     try {
-      set({ loading: true });  update
+      set({ loading: true });  
       const token = sessionStorage.getItem("lh_token"); 
       const response = await fetchAPI({
         method: "put",
@@ -196,7 +196,7 @@ const createEventSlice = (set) => ({
   // Action to request an event swap
   requestEventSwap: async (userId, { fromEventId, toEventId, toMemberId }) => {
     try {
-      set({ loading: true });  request
+      set({ loading: true }); 
       const token = sessionStorage.getItem('lh_token'); 
       const response = await fetchAPI({
         method: 'POST',
