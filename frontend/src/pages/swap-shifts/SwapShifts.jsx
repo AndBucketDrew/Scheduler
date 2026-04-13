@@ -12,7 +12,8 @@ import {
 } from '@mui/material';
 import useStore from '../../hooks/useStore.js';
 import useForm from '../../hooks/useForm.js';
-import styles from './SwapShifts.module.css'; 
+import styles from './SwapShifts.module.css';
+import sharedStyles from '../../assets/styles/shared.module.css';
 
 const SwapShifts = () => {
   const { loggedInMember, fetchEvents, fetchSingleEvent, events, loading, requestEventSwap } = useStore((state) => state);
@@ -88,10 +89,9 @@ const SwapShifts = () => {
   };
 
   return (
-    <div className={styles.swapShiftsContainer}>
-      {/* Container to center the swap form */}
-      <div className={styles.swapShiftsForm}>
-        <Typography variant="h4" component="h1" className={styles.swapShiftsHeader}>
+    <div className={sharedStyles.pageContainer}>
+      <div className={sharedStyles.card}>
+        <Typography variant="h4" component="h1" className={sharedStyles.cardTitle}>
           Request a Shift Swap
         </Typography>
 
@@ -108,7 +108,7 @@ const SwapShifts = () => {
               value={formState.fromEventId}
               onChange={handleFormChange}
               label="Select Your Shift"
-              className={styles.selectField}
+              className={sharedStyles.field}
             >
               <MenuItem value="">
                 <em>None</em>
@@ -130,7 +130,7 @@ const SwapShifts = () => {
               value={formState.toEventId}
               onChange={handleFormChange}
               label="Select Shift to Swap Into"
-              className={styles.selectField}
+              className={sharedStyles.field}
             >
               <MenuItem value="">
                 <em>None</em>
@@ -152,7 +152,7 @@ const SwapShifts = () => {
               value={formState.toMemberId}
               onChange={handleFormChange}
               label="Select Member to Swap With"
-              className={styles.selectField}
+              className={sharedStyles.field}
             >
               <MenuItem value="">
                 <em>None</em>
@@ -170,7 +170,7 @@ const SwapShifts = () => {
             variant="contained"
             onClick={handleSwapRequest}
             disabled={loading}
-            className={styles.swapShiftsButton}
+            className={sharedStyles.btnPrimary}
           >
             Request Swap
           </Button>

@@ -16,7 +16,8 @@ import {
 import useStore from '../../hooks/useStore.js';
 import useForm from '../../hooks/useForm.js';
 import { useNavigate } from 'react-router-dom';
-import styles from './newShift.module.css'; // Import CSS Module
+import styles from './newShift.module.css';
+import sharedStyles from '../../assets/styles/shared.module.css';
 
 const NewShift = () => {
   // Destructure necessary methods and state from the global store
@@ -79,10 +80,9 @@ const NewShift = () => {
   };
 
   return (
-    <div className={styles.newShiftContainer}>
-      {/* Container for the form, styled similarly to NewMember */}
-      <div className={styles.newShiftForm}>
-        <Typography variant="h4" component="h1" className={styles.newShiftHeader}>
+    <div className={sharedStyles.pageContainer}>
+      <div className={sharedStyles.card}>
+        <Typography variant="h4" component="h1" className={sharedStyles.cardTitle}>
           Create New Shift
         </Typography>
 
@@ -96,7 +96,7 @@ const NewShift = () => {
               value={formState.type}
               onChange={handleFormChange}
               label="Event Type"
-              className={styles.textField}
+              className={sharedStyles.field}
             >
               <MenuItem value="">
                 <em>Select an event type</em>
@@ -118,7 +118,7 @@ const NewShift = () => {
               onChange={handlePeopleChange}
               input={<OutlinedInput label="Assign Members" />}
               renderValue={(selected) => (
-                <Box className={styles.chipBox}>
+                <Box className={sharedStyles.chipRow}>
                   {selected.map((id) => {
                     const member = members.find((m) => m._id === id);
                     return member ? (
@@ -131,7 +131,7 @@ const NewShift = () => {
                   })}
                 </Box>
               )}
-              className={styles.textField}
+              className={sharedStyles.field}
             >
               {members.map((member) => (
                 <MenuItem key={member._id} value={member._id} className={styles.menuItem}>
@@ -156,7 +156,7 @@ const NewShift = () => {
             InputLabelProps={{ shrink: true }}
             required
             variant="outlined"
-            className={styles.textField}
+            className={sharedStyles.field}
           />
 
           {/* End Date Input */}
@@ -170,7 +170,7 @@ const NewShift = () => {
             InputLabelProps={{ shrink: true }}
             required
             variant="outlined"
-            className={styles.textField}
+            className={sharedStyles.field}
           />
 
           {/* Location Input */}
@@ -182,14 +182,14 @@ const NewShift = () => {
             onChange={handleFormChange}
             required
             variant="outlined"
-            className={styles.textField}
+            className={sharedStyles.field}
           />
 
           {/* Submit Button */}
           <Button
             type="submit"
             variant="contained"
-            className={styles.newShiftButton}
+            className={sharedStyles.btnPrimary}
           >
             Create Shift
           </Button>

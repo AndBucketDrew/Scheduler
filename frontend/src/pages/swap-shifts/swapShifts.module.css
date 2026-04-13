@@ -1,16 +1,4 @@
-/* swapShifts.module.css */
-
-.swapShiftsContainer {
-  composes: pageContainer from '../../assets/styles/shared.module.css';
-}
-
-.swapShiftsForm {
-  composes: card from '../../assets/styles/shared.module.css';
-}
-
-.swapShiftsHeader {
-  composes: cardTitle from '../../assets/styles/shared.module.css';
-}
+/* swapShifts.module.css — page-specific only; shared card/layout via sharedStyles */
 
 .formBox {
   display: flex;
@@ -18,18 +6,10 @@
   gap: 16px;
 }
 
-.selectField {
-  composes: field from '../../assets/styles/shared.module.css';
-}
-
 .loadingSpinner {
   display: block;
   margin: 16px auto;
   color: var(--accent);
-}
-
-.swapShiftsButton {
-  composes: btnPrimary from '../../assets/styles/shared.module.css';
 }
 
 /* Alert — semantic colours on warm dark surface */

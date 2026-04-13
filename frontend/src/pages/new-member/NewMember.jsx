@@ -11,7 +11,7 @@ import {
 import useStore from '../../hooks/useStore.js'; // Custom hook for accessing global state
 import useForm from '../../hooks/useForm.js';   // Custom hook for form state management
 import { useNavigate, Link as RouterLink } from 'react-router-dom'; // React Router utilities
-import styles from './NewMember.module.css';   // Import CSS Module for scoped styling
+import sharedStyles from '../../assets/styles/shared.module.css';
 
 const NewMember = () => {
   // Destructure necessary methods from the global store
@@ -53,11 +53,9 @@ const NewMember = () => {
 
   return (
     // Outer container to center the form on the page
-    <div className={styles.newmemberContainer}>
-      {/* Form wrapper with styling */}
-      <div className={styles.newmemberForm}>
-        {/* Form header */}
-        <Typography variant="h4" component="h1" className={styles.newmemberHeader}>
+    <div className={sharedStyles.pageContainer}>
+      <div className={sharedStyles.card}>
+        <Typography variant="h4" component="h1" className={sharedStyles.cardTitle}>
           Create New Member
         </Typography>
 
@@ -72,7 +70,7 @@ const NewMember = () => {
               name="email"
               value={formState.email}
               onChange={handleFormChange}
-              className={styles.textField}
+              className={sharedStyles.field}
             />
           </Grid>
           {/* First Name field */}
@@ -84,7 +82,7 @@ const NewMember = () => {
               name="firstName"
               value={formState.firstName}
               onChange={handleFormChange}
-              className={styles.textField}
+              className={sharedStyles.field}
             />
           </Grid>
           {/* Last Name field */}
@@ -96,7 +94,7 @@ const NewMember = () => {
               name="lastName"
               value={formState.lastName}
               onChange={handleFormChange}
-              className={styles.textField}
+              className={sharedStyles.field}
             />
           </Grid>
           {/* Birth Day field */}
@@ -108,7 +106,7 @@ const NewMember = () => {
               name="birthDay"
               value={formState.birthDay}
               onChange={handleFormChange}
-              className={styles.textField}
+              className={sharedStyles.field}
             />
           </Grid>
           {/* Birth Month field */}
@@ -120,7 +118,7 @@ const NewMember = () => {
               name="birthMonth"
               value={formState.birthMonth}
               onChange={handleFormChange}
-              className={styles.textField}
+              className={sharedStyles.field}
             />
           </Grid>
           {/* Birth Year field */}
@@ -132,7 +130,7 @@ const NewMember = () => {
               name="birthYear"
               value={formState.birthYear}
               onChange={handleFormChange}
-              className={styles.textField}
+              className={sharedStyles.field}
             />
           </Grid>
           {/* Phone Number field */}
@@ -144,7 +142,7 @@ const NewMember = () => {
               name="number"
               value={formState.number}
               onChange={handleFormChange}
-              className={styles.textField}
+              className={sharedStyles.field}
             />
           </Grid>
           {/* Age field */}
@@ -157,7 +155,7 @@ const NewMember = () => {
               value={formState.age}
               onChange={handleFormChange}
               type="number"
-              className={styles.textField}
+              className={sharedStyles.field}
             />
           </Grid>
           {/* Role selection */}
@@ -169,7 +167,7 @@ const NewMember = () => {
                 name="role"
                 value={formState.role}
                 onChange={handleFormChange}
-                className={styles.textField}
+                className={sharedStyles.field}
               >
                 <MenuItem value="super-admin">Super Admin</MenuItem>
                 <MenuItem value="office-leader">Office Leader</MenuItem>
@@ -184,7 +182,7 @@ const NewMember = () => {
         <Button
           variant="contained"
           onClick={handleSignup}
-          className={styles.newmemberButton}
+          className={sharedStyles.btnPrimary}
         >
           Confirm
         </Button>

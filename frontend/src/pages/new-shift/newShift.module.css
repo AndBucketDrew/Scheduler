@@ -1,16 +1,4 @@
-/* newShift.module.css */
-
-.newShiftContainer {
-  composes: pageContainer from '../../assets/styles/shared.module.css';
-}
-
-.newShiftForm {
-  composes: card from '../../assets/styles/shared.module.css';
-}
-
-.newShiftHeader {
-  composes: cardTitle from '../../assets/styles/shared.module.css';
-}
+/* newShift.module.css — page-specific only; shared card/layout via sharedStyles */
 
 .formBox {
   display: flex;
@@ -18,19 +6,10 @@
   gap: 16px;
 }
 
-.textField {
-  composes: field from '../../assets/styles/shared.module.css';
-}
-
-.chipBox {
-  composes: chipRow from '../../assets/styles/shared.module.css';
-}
-
 .chip {
   /* MuiChip-root overridden globally */
 }
 
-/* Avatar in member select menu */
 .avatar {
   width: 28px;
   height: 28px;
@@ -48,8 +27,4 @@
 .menuItem {
   display: flex;
   align-items: center;
-}
-
-.newShiftButton {
-  composes: btnPrimary from '../../assets/styles/shared.module.css';
 }

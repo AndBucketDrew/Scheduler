@@ -1,37 +1,9 @@
-/* editShifts.module.css */
-
-.editShiftContainer {
-  composes: pageContainer from '../../assets/styles/shared.module.css';
-}
-
-.editShiftForm {
-  composes: card from '../../assets/styles/shared.module.css';
-}
-
-.editShiftHeader {
-  composes: cardTitle from '../../assets/styles/shared.module.css';
-}
+/* editShifts.module.css — page-specific only; shared card/layout via sharedStyles */
 
 .formGrid {
   margin-top: 8px;
 }
 
-.textField {
-  composes: field from '../../assets/styles/shared.module.css';
-}
-
-.selectField {
-  composes: field from '../../assets/styles/shared.module.css';
-}
-
-.chipContainer {
-  composes: chipRow from '../../assets/styles/shared.module.css';
-}
-
 .chip {
   /* MuiChip-root overridden globally in index.css */
-}
-
-.editShiftButton {
-  composes: btnPrimary from '../../assets/styles/shared.module.css';
 }

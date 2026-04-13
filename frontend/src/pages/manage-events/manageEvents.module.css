@@ -1,10 +1,12 @@
 /* manageEvents.module.css */
 
 .container {
-  padding: 28px 32px;
-  max-width: 1200px;
+  padding: 40px 48px;
+  width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .loadingContainer {
@@ -17,7 +19,7 @@
   font-weight: 600;
   letter-spacing: -0.01em;
   color: var(--text);
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
 
 /* ── Dialog sections ── */

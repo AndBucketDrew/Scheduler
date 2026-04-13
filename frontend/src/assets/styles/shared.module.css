@@ -7,6 +7,7 @@
 /* ── Full-viewport centred wrapper for single-card pages ── */
 .pageContainer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
@@ -27,13 +28,14 @@
    Depth comes from the mist border and ambient shadow,
    not from a heavy drop-shadow. */
 .card {
-  width: 100%;
-  max-width: 420px;
-  padding: 44px 40px;
+  width: min(520px, 100%);
+  min-width: 0;
+  padding: 52px 48px;
   background-color: var(--surface);
   border: 1px solid var(--border);
   border-radius: 14px;
   box-shadow: 0 2px 40px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
 }
 
 /* ── Card title — Warp heading treatment ── */
@@ -42,7 +44,7 @@
   font-weight: 600;
   letter-spacing: -0.025em;
   color: var(--text);
-  margin-bottom: 32px;
+  margin-bottom: 32px !important;
   text-align: center;
 }
 
@@ -58,7 +60,7 @@
 
 /* ── Form field spacing ── */
 .field {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 /* ── Chip container ── */

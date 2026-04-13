@@ -15,6 +15,7 @@ import useStore from '../../hooks/useStore';
 import { useNavigate, useParams } from 'react-router-dom';
 import dayjs from 'dayjs';
 import styles from './editShifts.module.css';
+import sharedStyles from '../../assets/styles/shared.module.css';
 
 const EditShift = () => {
   const { id: shiftId } = useParams();
@@ -76,10 +77,9 @@ const EditShift = () => {
   };
 
   return (
-    <div className={styles.editShiftContainer}>
-      {/* Container to center the edit form */}
-      <div className={styles.editShiftForm}>
-        <Typography variant="h4" component="h1" className={styles.editShiftHeader}>
+    <div className={sharedStyles.pageContainer}>
+      <div className={sharedStyles.card}>
+        <Typography variant="h4" component="h1" className={sharedStyles.cardTitle}>
           Schicht bearbeiten
         </Typography>
 
@@ -94,7 +94,7 @@ const EditShift = () => {
                 label="Schichttyp"
                 value={formState.type}
                 onChange={(e) => setFormState({ ...formState, type: e.target.value })}
-                className={styles.selectField}
+                className={sharedStyles.field}
               >
                 {eventTypes.map((eventType) => (
                   <MenuItem key={eventType._id} value={eventType._id}>
@@ -115,7 +115,7 @@ const EditShift = () => {
                 onChange={handlePeopleChange}
                 input={<OutlinedInput label="Assign Members" />}
                 renderValue={(selected) => (
-                  <div className={styles.chipContainer}>
+                  <div className={sharedStyles.chipRow}>
                     {selected.map((id) => {
                       const member = members.find((m) => m._id === id);
                       return member ? (
@@ -128,7 +128,7 @@ const EditShift = () => {
                     })}
                   </div>
                 )}
-                className={styles.selectField}
+                className={sharedStyles.field}
               >
                 {members.map((member) => (
                   <MenuItem key={member._id} value={member._id}>
@@ -149,7 +149,7 @@ const EditShift = () => {
               name="startDate"
               value={formState.startDate}
               onChange={(e) => setFormState({ ...formState, startDate: e.target.value })}
-              className={styles.textField}
+              className={sharedStyles.field}
             />
           </Grid>
 
@@ -163,7 +163,7 @@ const EditShift = () => {
               name="endDate"
               value={formState.endDate}
               onChange={(e) => setFormState({ ...formState, endDate: e.target.value })}
-              className={styles.textField}
+              className={sharedStyles.field}
             />
           </Grid>
 
@@ -176,7 +176,7 @@ const EditShift = () => {
               name="location"
               value={formState.location}
               onChange={(e) => setFormState({ ...formState, location: e.target.value })}
-              className={styles.textField}
+              className={sharedStyles.field}
             />
           </Grid>
         </Grid>
@@ -185,7 +185,7 @@ const EditShift = () => {
         <Button
           variant="contained"
           onClick={handleUpdateShift}
-          className={styles.editShiftButton}
+          className={sharedStyles.btnPrimary}
         >
           Schicht aktualisieren
         </Button>

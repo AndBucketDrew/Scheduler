@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Box,
   Typography,
   Table,
   TableBody,
@@ -15,6 +14,7 @@ import {
 } from '@mui/material';
 import useStore from '../../hooks/useStore.js';
 import { fetchAPI } from '../../utils';
+import styles from './reviewSwapRequest.module.css';
 
 const ReviewSwapRequest = () => {
   const { loggedInMember, fetchPendingSwapRequests, swapRequests, loading, } = useStore((state) => state);
@@ -52,21 +52,19 @@ const ReviewSwapRequest = () => {
   };
 
   return (
-    <Box sx={{ p: 4, maxWidth: '1000px', mx: 'auto' }}>
-      <Typography variant="h4" gutterBottom>
-        Approve Swap Requests
-      </Typography>
+    <div className={styles.container}>
+      <Typography className={styles.title}>Approve Swap Requests</Typography>
 
-      {loading && <CircularProgress sx={{ display: 'block', mx: 'auto', my: 2 }} />}
+      {loading && <CircularProgress className={styles.loader} />}
 
       {alert.type && (
-        <Alert severity={alert.type} sx={{ mb: 2 }}>
+        <Alert severity={alert.type} className={styles.alert}>
           {alert.message}
         </Alert>
       )}
 
       {swapRequests.length === 0 && !loading && (
-        <Typography>No pending swap requests found.</Typography>
+        <Typography className={styles.emptyState}>No pending swap requests found.</Typography>
       )}
 
       {swapRequests.length > 0 && (
@@ -102,19 +100,14 @@ const ReviewSwapRequest = () => {
                   <TableCell>{request.toMember?._id || request.toMember}</TableCell>
                   <TableCell>
                     <Button
-                      variant="contained"
-                      color="success"
-                      size="small"
+                      className={styles.approveBtn}
                       onClick={() => handleSwapAction(request._id, true)}
                       disabled={loading || request.status !== 'pending'}
-                      sx={{ mr: 1 }}
                     >
                       Approve
                     </Button>
                     <Button
-                      variant="contained"
-                      color="error"
-                      size="small"
+                      className={styles.declineBtn}
                       onClick={() => handleSwapAction(request._id, false)}
                       disabled={loading || request.status !== 'pending'}
                     >
@@ -127,7 +120,7 @@ const ReviewSwapRequest = () => {
           </Table>
         </TableContainer>
       )}
-    </Box>
+    </div>
   );
 };
 
