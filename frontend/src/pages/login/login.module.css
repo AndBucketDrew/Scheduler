@@ -1,48 +1,38 @@
+/* ============================================================
+   login.module.css  —  Two-panel login card
+   ============================================================ */
+
 .loginContainer {
-  display: flex;
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
+  display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--base-clr);
-  height: 100vh;
-  width: 100vw;
+  background-color: var(--bg);
   z-index: 10;
 }
 
+/* Outer card shell */
 .loginCard {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 1200px;
-  height: 700px; 
-  border-radius: 12px !important;
-  position: relative;
+  width: min(1120px, 94vw);
+  height: min(660px, 92vh);
+  border-radius: 16px;
   overflow: hidden;
-  background-color: var(--base-clr);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  z-index: 20;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 60px rgba(0, 0, 0, 0.6);
 }
 
+/* ── Left panel — brand ── */
 .loginLeft {
-  background: linear-gradient(to right, #0077b6, #00b4d8);
+  width: 58%;
+  height: 100%;
+  background: linear-gradient(145deg, #0b2d44 0%, #0d4268 55%, #1058a0 100%);
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60%; 
-  height: 100%;
   position: relative;
-  z-index: 1;
-}
-
-.loginRight {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40%; 
-  height: 100%;
-  background-color: #1a1e2b;
+  flex-shrink: 0;
 }
 
 .logo {
@@ -50,49 +40,51 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 400px;
+  max-width: 360px;
+  filter: drop-shadow(0 6px 28px rgba(0, 0, 0, 0.45));
+  user-select: none;
+}
+
+/* ── Right panel — form ── */
+.loginRight {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 52px 48px;
+  background-color: var(--surface);
+  overflow-y: auto;
 }
 
 .loginTitle {
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  margin-bottom: 32px;
   text-align: center;
-  padding-bottom: 16px;
-  color: var(--text-clr);
 }
 
+/* MUI overrides scoped to the form panel */
 .loginRight :global(.MuiTextField-root) {
   margin-bottom: 16px;
 }
 
-.loginRight :global(.MuiOutlinedInput-root) {
-  background-color: var(--base-clr);
-  border-radius: 4px;
-  border: 1px solid var(--line-clr);
-}
-
-.loginRight :global(.MuiInputLabel-root) {
-  color: var(--secondary-text-clr);
-}
-
-.loginRight :global(.MuiOutlinedInput-input) {
-  color: var(--text-clr);
-}
-
-.loginRight :global(.MuiOutlinedInput-root.Mui-focused) {
-  border: 1px solid var(--accent-clr);
-}
-
-.loginRight :global(.MuiSvgIcon-root) {
-  color: var(--secondary-text-clr);
-}
-
 .loginRight :global(.MuiButton-root) {
-  background-color: var(--accent-clr);
-  color: var(--text-clr);
-  font-weight: bold;
-  border-radius: 4px;
-  padding: 12px;
+  width: 100%;
+  margin-top: 8px;
+  padding: 11px !important;
+  background-color: var(--accent) !important;
+  color: #fff !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.01em !important;
+  text-transform: none !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
 }
 
 .loginRight :global(.MuiButton-root:hover) {
-  background-color: #4a4ecc;
+  background-color: var(--accent-dk) !important;
+  box-shadow: 0 0 0 3px rgba(94, 99, 255, 0.2) !important;
 }

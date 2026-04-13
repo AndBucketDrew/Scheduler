@@ -233,7 +233,7 @@ const getUserEvents = async (req, res, next) => {
     try {
         const userId = req.params.id;
 
-        const userShifts = await Event.find({ people: userId });
+        const userShifts = await Event.find({ people: userId }).populate('type');
 
         if (userShifts.length === 0) {
             return res.status(404).json({ message: 'No shifts found for this user.' });

@@ -1,90 +1,40 @@
-:global(body) {
-    margin: 0;
-    padding: 0;
-    background-color: var(--base-clr); /* --base-clr */
-    font-family: 'Inter', sans-serif;
-  }
-  
-  .newmemberContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .newmemberForm {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 400px;
-    padding: 32px;
-    background-color: var(--hover-clr); 
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  .newmemberHeader {
-    text-align: center;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--accent-clr); 
-    letter-spacing: 1px;
-  }
-  
-  .textField {
-    margin-bottom: 16px;
-  }
-  
-  .textField :global(.MuiOutlinedInput-root) {
-    background-color: var(--base-clr); 
-    border-radius: 4px;
-    border: 1px solid  var(--line-clr);; 
-    width: 100%;
-  }
-  
-  .textField :global(input),
-  .textField :global(.MuiSelect-select) {
-    color: var(--text-clr); 
-  }
-  
-  .textField :global(.MuiInputLabel-root) {
-    color: var(--secondary-text-clr); 
-  }
-  
-  .textField :global(.MuiOutlinedInput-root.Mui-focused) {
-    border: 1px solid var(--accent-clr); 
-  }
-  
-  .textField :global(.MuiOutlinedInput-input) {
-    color: var(--text-clr); 
-  }
-  
-  .newmemberButton {
-    margin-top: 24px;
-    width: 100%;
-    font-weight: bold;
-    background-color: var(--accent-clr); 
-    color: var(--text-clr); 
-    border-radius: 4px;
-    padding: 12px;
-  }
-  
-  .newmemberButton:hover {
-    background-color: #4a4ecc; /* Slightly darker shade of --accent-clr */
-  }
-  
-  .loginLink {
-    text-align: center;
-    margin-top: 16px;
-  }
-  
-  .loginLink :global(a) {
-    color: var(--accent-clr); 
-    text-decoration: none;
-  }
-  
-  .loginLink :global(a:hover) {
-    text-decoration: underline;
-  }
+/* NewMember.module.css */
+
+.newmemberContainer {
+  composes: pageContainer from '../../assets/styles/shared.module.css';
+}
+
+.newmemberForm {
+  composes: card from '../../assets/styles/shared.module.css';
+}
+
+.newmemberHeader {
+  composes: cardTitle from '../../assets/styles/shared.module.css';
+}
+
+.textField {
+  composes: field from '../../assets/styles/shared.module.css';
+}
+
+.newmemberButton {
+  composes: btnPrimary from '../../assets/styles/shared.module.css';
+}
+
+.loginLink {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.8rem;
+  color: var(--text-3);
+}
+
+.loginLink :global(a) {
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 150ms ease;
+}
+
+.loginLink :global(a:hover) {
+  opacity: 0.8;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

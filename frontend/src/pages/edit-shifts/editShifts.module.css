@@ -1,121 +1,37 @@
-:global(body) {
-    margin: 0;
-    padding: 0;
-    background-color: #11121a; /* --base-clr */
-    font-family: 'Inter', sans-serif;
-  }
-  
-  /* Container to center the edit form on the page */
-  .editShiftContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  /* Form wrapper with dark background and shadow */
-  .editShiftForm {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 400px;
-    padding: 32px;
-    background-color: #222533; /* --hover-clr */
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Header styling for the form title */
-  .editShiftHeader {
-    text-align: center;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    font-size: 2rem;
-    font-weight: 700;
-    color: #5e63ff; /* --accent-clr */
-    letter-spacing: 1px;
-  }
-  
-  /* Grid container for form fields */
-  .formGrid {
-    margin-top: 16px;
-  }
-  
-  /* Styling for text fields */
-  .textField {
-    margin-bottom: 16px;
-  }
-  
-  .textField :global(.MuiOutlinedInput-root) {
-    background-color: #11121a; /* --base-clr */
-    border-radius: 4px;
-    border: 1px solid #42434a; /* --line-clr */
-    width: 100%;
-  }
-  
-  .textField :global(input) {
-    color: #e6e6ef; /* --text-clr */
-  }
-  
-  .textField :global(.MuiInputLabel-root) {
-    color: #b0b3c1; /* --secondary-text-clr */
-  }
-  
-  .textField :global(.MuiOutlinedInput-root.Mui-focused) {
-    border: 1px solid #5e63ff; /* --accent-clr */
-  }
-  
-  /* Styling for select fields */
-  .selectField {
-    margin-bottom: 16px;
-  }
-  
-  .selectField :global(.MuiOutlinedInput-root) {
-    background-color: #11121a; /* --base-clr */
-    border-radius: 4px;
-    border: 1px solid #42434a; /* --line-clr */
-    width: 100%;
-  }
-  
-  .selectField :global(.MuiSelect-select) {
-    color: #e6e6ef; /* --text-clr */
-  }
-  
-  .selectField :global(.MuiInputLabel-root) {
-    color: #b0b3c1; /* --secondary-text-clr */
-  }
-  
-  .selectField :global(.MuiOutlinedInput-root.Mui-focused) {
-    border: 1px solid #5e63ff; /* --accent-clr */
-  }
-  
-  /* Container for selected member chips */
-  .chipContainer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    max-height: 100px;
-    overflow-y: auto;
-  }
-  
-  /* Styling for individual chips */
-  .chip {
-    background-color: #42434a; /* --line-clr */
-    color: #e6e6ef; /* --text-clr */
-    margin: 2px;
-  }
-  
-  /* Submit button styling */
-  .editShiftButton {
-    margin-top: 24px;
-    width: 100%;
-    font-weight: bold;
-    background-color: #5e63ff; /* --accent-clr */
-    color: #e6e6ef; /* --text-clr */
-    border-radius: 4px;
-    padding: 12px;
-  }
-  
-  .editShiftButton:hover {
-    background-color: #4a4ecc; /* Slightly darker shade of --accent-clr */
-  }
+/* editShifts.module.css */
+
+.editShiftContainer {
+  composes: pageContainer from '../../assets/styles/shared.module.css';
+}
+
+.editShiftForm {
+  composes: card from '../../assets/styles/shared.module.css';
+}
+
+.editShiftHeader {
+  composes: cardTitle from '../../assets/styles/shared.module.css';
+}
+
+.formGrid {
+  margin-top: 8px;
+}
+
+.textField {
+  composes: field from '../../assets/styles/shared.module.css';
+}
+
+.selectField {
+  composes: field from '../../assets/styles/shared.module.css';
+}
+
+.chipContainer {
+  composes: chipRow from '../../assets/styles/shared.module.css';
+}
+
+.chip {
+  /* MuiChip-root overridden globally in index.css */
+}
+
+.editShiftButton {
+  composes: btnPrimary from '../../assets/styles/shared.module.css';
+}

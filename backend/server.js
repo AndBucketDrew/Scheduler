@@ -13,7 +13,7 @@ const MONGODB_USERNAME = process.env.MONGODB_USERNAME;
 const MONGODB_PW = process.env.MONGODB_PW;
 
 //MongoDB connection 
-const CONNECTION = `mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PW}@cluster0.6ufcv.mongodb.net/`;
+const CONNECTION = `mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PW}@wifi.sm6wh.mongodb.net/`;
 
 const app = express();
 

@@ -1,42 +1,20 @@
+/* manageUsers.module.css */
+
 .container {
-  padding: 20px;
+  padding: 28px 32px;
   max-width: 1200px;
   margin: 0 auto;
+  min-height: 100vh;
 }
 
 .loadingContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.deleteButton {
-  background-color: var(--hover-clr) !important;
-  color: var(--text-clr) !important;
-  border: none !important;
-  padding: 8px 16px !important;
-  border-radius: 4px !important;
-  text-transform: none !important;
-  font-weight: bold !important;
-  margin: 5px !important;
-}
-
-.deleteButton:hover {
-  background-color: #1a1e2b !important;
+  composes: pageLoader from '../../assets/styles/shared.module.css';
 }
 
 .editButton {
-  background-color: var(--accent-clr) !important;
-  color: white !important;
-  border: none !important;
-  padding: 8px 16px !important;
-  border-radius: 4px !important;
-  text-transform: none !important;
-  font-weight: bold !important;
-  margin: 5px !important;
+  composes: btnAccent from '../../assets/styles/shared.module.css';
 }
 
-.editButton:hover {
-  background-color: #4b50cc !important;
+.deleteButton {
+  composes: btnGhost from '../../assets/styles/shared.module.css';
 }

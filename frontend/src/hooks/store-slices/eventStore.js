@@ -100,7 +100,7 @@ const createEventSlice = (set) => ({
   // Action to create a new event type
   createEventType: async (eventTypeData) => {
     try {
-      set({ loading: true });  creation
+      set({ loading: true });
       const token = sessionStorage.getItem("lh_token"); 
       const response = await fetchAPI({
         method: "post",
@@ -125,7 +125,7 @@ const createEventSlice = (set) => ({
   // Action to delete an event type by ID
   deleteEventType: async (eventTypeId) => {
     try {
-      set({ loading: true });  deletion
+      set({ loading: true });
       const token = sessionStorage.getItem("lh_token"); 
       const response = await fetchAPI({
         method: "delete",

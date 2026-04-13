@@ -1,1 +1,98 @@
-/* import styles from 'reviewSwapRequest.module.css';  */
+/* reviewSwapRequest.module.css */
+
+.container {
+  padding: 28px 32px;
+  max-width: 1000px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 24px;
+}
+
+.loader {
+  display: block;
+  margin: 32px auto;
+  color: var(--accent);
+}
+
+/* Alert — semantic colours on dark surface */
+.alert {
+  margin-bottom: 20px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  background-color: var(--raised) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+}
+
+.alert:global(.MuiAlert-standardSuccess) {
+  background-color: rgba(26, 60, 52, 0.7) !important;
+  border-color: rgba(52, 120, 96, 0.3) !important;
+}
+
+.alert:global(.MuiAlert-standardError) {
+  background-color: rgba(60, 26, 26, 0.7) !important;
+  border-color: rgba(120, 52, 52, 0.3) !important;
+}
+
+.emptyState {
+  font-size: 0.875rem;
+  color: var(--text-3);
+  letter-spacing: 0.01em;
+  padding: 32px 0;
+  text-align: center;
+}
+
+/* Action buttons */
+.approveBtn {
+  padding: 5px 12px !important;
+  background-color: var(--accent) !important;
+  color: #fff !important;
+  font-size: 0.775rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.01em !important;
+  text-transform: none !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  border: none !important;
+  margin-right: 6px !important;
+  transition: background-color 150ms ease !important;
+}
+
+.approveBtn:hover:not(:disabled) {
+  background-color: var(--accent-dk) !important;
+}
+
+.approveBtn:disabled {
+  opacity: 0.4 !important;
+}
+
+.declineBtn {
+  padding: 5px 12px !important;
+  background-color: transparent !important;
+  color: var(--text-3) !important;
+  font-size: 0.775rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.01em !important;
+  text-transform: none !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  border: 1px solid var(--border) !important;
+  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease !important;
+}
+
+.declineBtn:hover:not(:disabled) {
+  background-color: rgba(180, 50, 50, 0.12) !important;
+  border-color: rgba(180, 50, 50, 0.4) !important;
+  color: #e07070 !important;
+}
+
+.declineBtn:disabled {
+  opacity: 0.4 !important;
+}

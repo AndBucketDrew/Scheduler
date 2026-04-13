@@ -1,192 +1,269 @@
-.sidebar{
+/* ============================================================
+   sidebar.module.css  —  Warp-inspired navigation
+   Warm dark surface, mist border, parchment text,
+   purple active indicator, clean transitions.
+   ============================================================ */
+
+.sidebar {
   box-sizing: border-box;
   height: 100vh;
-  width: 250px;
-  padding: 5px 1em;
-  background-color: var(--base-clr);
-  border-right: 1px solid var(--line-clr);
-
+  width: 240px;
+  padding: 16px 12px;
+  background-color: var(--surface);
+  border-right: 1px solid var(--border);
   position: sticky;
   top: 0;
-  /* align-self: start; */
-  transition: 300ms ease-in-out;
-  overflow: hidden;
-  text-wrap: nowrap;
-}
-.sidebar.close{
-  padding: 5px;
-  width: 60px;
-}
-.sidebar ul{
-  list-style: none;
-}
-.sidebar > ul > li:first-child{
   display: flex;
-  justify-content: flex-end;
-  margin-bottom: 16px;
-  .logo{
-    font-weight: 600;
-  }
-}
-.sidebar .navLink.active {
-  color: var(--accent-clr);
-  transition: ease-in 200ms;
+  flex-direction: column;
+  transition: width 250ms ease, padding 250ms ease;
+  overflow: hidden;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.sidebar .navLink.active svg{
-  fill: var(--accent-clr); /* Set the icon color to accent color when active */
-  transition: fill 200ms ease-in; /* Smooth transition for the icon color */
+.sidebar.close {
+  width: 56px;
+  padding: 16px 8px;
 }
 
-.sidebar a, .sidebar .dropdownbtn, .sidebar .logo{
-  border-radius: .5em;
-  padding: .85em;
-  text-decoration: none;
-  color: var(--text-clr);
+.sidebar ul {
+  list-style: none;
+  width: 100%;
+}
+
+/* ── Header row: logo + toggle ── */
+.sidebar > ul > li:first-child {
   display: flex;
   align-items: center;
-  gap: 1em;
+  justify-content: space-between;
+  padding: 0 4px;
+  margin-bottom: 20px;
 }
-.dropdownbtn{
-  width: 100%;
-  text-align: left;
-  background: none;
-  border: none;
-  font: inherit;
-  cursor: pointer;
-}
-.sidebar svg{
-  flex-shrink: 0;
-  fill: var(--text-clr);
-}
-.sidebar a span, .sidebar .dropdownbtn span{
-  flex-grow: 1;
-}
-.sidebar a:hover, .sidebar .dropdownbtn:hover{
-  background-color: var(--hover-clr);
-}
-.sidebar .submenu{
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 300ms ease-in-out;
 
-  > div{
-    overflow: hidden;
-  }
+.logo {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  padding: 8px;
+  cursor: default;
+  user-select: none;
+  white-space: nowrap;
+  overflow: hidden;
 }
-.sidebar .submenu.show{
-  grid-template-rows: 1fr;
+
+.sidebar.close .logo {
+  opacity: 0;
+  width: 0;
+  padding: 0;
 }
-.dropdownbtn svg{
-  transition: 200ms ease;
+
+/* ── Toggle button ── */
+.togglebtn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  background: none;
+  cursor: pointer;
+  color: var(--text-3);
+  transition: background-color 150ms ease, color 150ms ease;
+  margin-left: auto;
 }
-.rotate svg:last-child{
+
+.togglebtn svg {
+  fill: var(--text-3);
+  transition: rotate 200ms ease, fill 150ms ease;
+  flex-shrink: 0;
+}
+
+.togglebtn:hover {
+  background-color: rgba(250, 249, 246, 0.07);
+  color: var(--text-2);
+}
+
+.togglebtn:hover svg {
+  fill: var(--text-2);
+}
+
+.rotate svg:last-child {
   rotate: 180deg;
 }
-.sidebar .submenu a{
-  padding-left: 2em;
-}
-.togglebtn{
-  margin-left: auto;
-  padding: 1em;
-  border: none;
-  border-radius: .5em;
-  background: none;
+
+/* ── Nav links & dropdown buttons ── */
+.sidebar a,
+.dropdownbtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 10px;
+  border-radius: 7px;
+  text-decoration: none;
+  color: var(--text-2);
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.005em;
   cursor: pointer;
-
-  svg{
-    transition: rotate 150ms ease;
-  }
-}
-.togglebtn:hover{
-  background-color: var(--hover-clr);
+  transition: background-color 150ms ease, color 150ms ease;
 }
 
-main{
-  padding: min(30px, 7%);
-}
-main p{
-  color: var(--secondary-text-clr);
-  margin-top: 5px;
-  margin-bottom: 15px;
-}
-.container{
-  border: 1px solid var(--line-clr);
-  border-radius: 1em;
-  margin-bottom: 20px;
-  padding: min(3em, 15%);
-
-  h2, p { margin-top: 1em }
+.dropdownbtn {
+  border: none;
+  background: none;
+  font: inherit;
+  text-align: left;
 }
 
-@media(max-width: 800px){
-  body{
+.sidebar a:hover,
+.dropdownbtn:hover {
+  background-color: rgba(250, 249, 246, 0.06);
+  color: var(--text);
+}
+
+.sidebar a:hover svg,
+.dropdownbtn:hover svg {
+  fill: var(--text);
+}
+
+/* ── Active link — purple accent ── */
+.navLink.active {
+  color: var(--accent) !important;
+  background-color: rgba(94, 99, 255, 0.1);
+}
+
+.navLink.active svg {
+  fill: var(--accent) !important;
+}
+
+/* ── Icons ── */
+.sidebar svg {
+  flex-shrink: 0;
+  fill: var(--text-3);
+  transition: fill 150ms ease;
+}
+
+/* ── Label spans ── */
+.sidebar a span,
+.dropdownbtn span {
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Submenu ── */
+.submenu {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 250ms ease;
+}
+
+.submenu > div {
+  overflow: hidden;
+}
+
+.submenu.show {
+  grid-template-rows: 1fr;
+}
+
+.dropdownbtn svg {
+  transition: rotate 200ms ease;
+}
+
+.sidebar .submenu a {
+  padding-left: 36px;
+  font-size: 0.825rem;
+  color: var(--text-3);
+}
+
+.sidebar .submenu a:hover {
+  color: var(--text);
+}
+
+/* ── Logout ── */
+.sidebar li:last-child {
+  margin-top: auto;
+}
+
+/* ── Responsive — bottom tab bar on mobile ── */
+@media (max-width: 800px) {
+  body {
     grid-template-columns: 1fr;
   }
-  main{
-    padding: 2em 1em 60px 1em;
-  }
-  .container{
-    border: none;
-    padding: 0;
-  }
-  .sidebar{
-    height: 60px;
+
+  .sidebar {
+    height: 56px;
     width: 100%;
-    border-right: none;
-    border-top: 1px solid var(--line-clr);
+    flex-direction: row;
+    align-items: center;
     padding: 0;
+    border-right: none;
+    border-top: 1px solid var(--border);
     position: fixed;
     top: unset;
     bottom: 0;
+    z-index: 100;
+  }
 
-    > ul{
-      padding: 0;
-      display: grid;
-      grid-auto-columns: 60px;
-      grid-auto-flow: column;
-      align-items: center;
-      overflow-x: scroll;
-    }
-    ul li{
-      height: 100%;
-    }
-    ul a, ul .dropdownbtn{
-      width: 60px;
-      height: 60px;
-      padding: 0;
-      border-radius: 0;
-      justify-content: center;
-    }
+  .sidebar > ul {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
 
-    ul li span, ul li:first-child, .dropdownbtn svg:last-child{
-      display: none;
-    }
+  .sidebar > ul::-webkit-scrollbar {
+    display: none;
+  }
 
-    ul li .submenu.show{
-      position: fixed;
-      bottom: 60px;
-      left: 0;
-      box-sizing: border-box;
-      height: 60px;
-      width: 100%;
-      background-color: var(--hover-clr);
-      border-top: 1px solid var(--line-clr);
-      display: flex;
-      justify-content: center;
+  .sidebar > ul > li:first-child,
+  .sidebar ul li span,
+  .dropdownbtn svg:last-child {
+    display: none;
+  }
 
-      > div{
-        overflow-x: auto;
-      }
-      li{
-        display: inline-flex;
-      }
-      a{
-        box-sizing: border-box;
-        padding: 1em;
-        width: auto;
-        justify-content: center;
-      }
-    }
+  .sidebar ul li {
+    height: 100%;
+  }
+
+  .sidebar a,
+  .dropdownbtn {
+    width: 56px;
+    height: 56px;
+    padding: 0;
+    border-radius: 0;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .submenu.show {
+    position: fixed;
+    bottom: 56px;
+    left: 0;
+    width: 100%;
+    background-color: var(--surface);
+    border-top: 1px solid var(--border);
+    grid-template-rows: 1fr;
+  }
+
+  .submenu.show > div {
+    display: flex;
+    overflow-x: auto;
+    padding: 4px;
+    scrollbar-width: none;
+  }
+
+  .sidebar .submenu a {
+    padding: 12px 16px;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 }

@@ -4,7 +4,7 @@ import { ScheduleXCalendar, useCalendarApp } from '@schedule-x/react';
 import { createViewWeek, createViewMonthGrid } from '@schedule-x/calendar';
 import { createDragAndDropPlugin } from '@schedule-x/drag-and-drop';
 import { createResizePlugin } from '@schedule-x/resize';
-import '@schedule-x/theme-default/dist/calendar.css';
+// calendar.css is imported in main.jsx before index.css to guarantee load order
 import { useEffect, useMemo, useRef, useState } from 'react';
 import dayjs from 'dayjs';
 import { LoadingSpinner } from '../loading-spinner/LoadingSpinner.jsx';

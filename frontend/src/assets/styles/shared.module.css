@@ -1,0 +1,138 @@
+/* ============================================================
+   shared.module.css  —  Warp design-system primitives
+   All classes are composable via:
+     composes: <name> from 'path/to/shared.module.css'
+   ============================================================ */
+
+/* ── Full-viewport centred wrapper for single-card pages ── */
+.pageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--bg);
+  padding: 24px;
+}
+
+/* ── Loading / empty state centred layout ── */
+.pageLoader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--bg);
+}
+
+/* ── Form card — Warp elevated surface ──
+   Depth comes from the mist border and ambient shadow,
+   not from a heavy drop-shadow. */
+.card {
+  width: 100%;
+  max-width: 420px;
+  padding: 44px 40px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 2px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* ── Card title — Warp heading treatment ── */
+.cardTitle {
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+/* ── Section label — Warp uppercase editorial ── */
+.label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 6px;
+}
+
+/* ── Form field spacing ── */
+.field {
+  margin-bottom: 16px;
+}
+
+/* ── Chip container ── */
+.chipRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-height: 96px;
+  overflow-y: auto;
+  padding: 2px 0;
+}
+
+/* ── Primary action button — purple, flat Warp style ── */
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 24px;
+  padding: 11px 20px !important;
+  background-color: var(--accent) !important;
+  color: #fff !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.01em !important;
+  text-transform: none !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  transition: background-color 150ms ease, box-shadow 150ms ease !important;
+}
+
+.btnPrimary:hover {
+  background-color: var(--accent-dk) !important;
+  box-shadow: 0 0 0 3px rgba(94, 99, 255, 0.2) !important;
+}
+
+/* ── Accent table / dialog button ── */
+.btnAccent {
+  padding: 6px 14px !important;
+  background-color: var(--accent) !important;
+  color: #fff !important;
+  font-size: 0.775rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.01em !important;
+  text-transform: none !important;
+  border-radius: 6px !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin: 3px !important;
+  transition: background-color 150ms ease !important;
+}
+
+.btnAccent:hover {
+  background-color: var(--accent-dk) !important;
+}
+
+/* ── Ghost / secondary table button ── */
+.btnGhost {
+  padding: 6px 14px !important;
+  background-color: transparent !important;
+  color: var(--text-2) !important;
+  font-size: 0.775rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.01em !important;
+  text-transform: none !important;
+  border-radius: 6px !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: none !important;
+  margin: 3px !important;
+  transition: background-color 150ms ease, color 150ms ease !important;
+}
+
+.btnGhost:hover {
+  background-color: var(--raised) !important;
+  color: var(--text) !important;
+  border-color: rgba(250, 249, 246, 0.2) !important;
+}

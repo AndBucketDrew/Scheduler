@@ -1,153 +1,55 @@
-/* Table customizations */
-:global(.MuiTableContainer-root) {
-  background-color: var(--base-clr);
-  border: 1px solid var(--line-clr);
-}
+/* manageEvents.module.css */
 
-:global(.MuiTable-root) {
-  background-color: var(--base-clr);
-  /* Ensure the table itself uses base-clr */
-}
-
-:global(.MuiTableCell-root) {
-  color: var(--text-clr) !important;
-  border-bottom: 1px solid var(--line-clr);
-  background-color: var(--base-clr);
-  /* Ensure all cells use base-clr */
-}
-
-:global(.MuiTableHead-root .MuiTableCell-root) {
-  background-color: var(--hover-clr);
-  /* Header uses hover-clr */
-  color: var(--text-clr) !important;
-  font-weight: 600;
-}
-
-:global(.MuiTableBody-root .MuiTableCell-root) {
-  background-color: var(--base-clr);
-  /* Explicitly set body cells to base-clr */
-}
-
-:global(.MuiTableRow-root) {
-  background-color: var(--base-clr);
-  /* Ensure rows use base-clr */
-}
-
-:global(.MuiTableRow-root:hover) {
-  background-color: var(--hover-clr);
-}
-
-/* Dialog customizations */
-:global(.MuiDialog-paper) {
-  background-color: var(--base-clr);
-  color: var(--text-clr);
-  border: 1px solid var(--line-clr);
-}
-/* src/pages/manageEvents.module.css */
 .container {
-  padding: 20px;
+  padding: 28px 32px;
   max-width: 1200px;
   margin: 0 auto;
-  background-color: var(--base-clr);
-  color: var(--text-clr);
   min-height: 100vh;
 }
 
 .loadingContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: var(--base-clr);
+  composes: pageLoader from '../../assets/styles/shared.module.css';
 }
 
-.circularProgress {
-  color: var(--accent-clr);
-}
-
+/* ── Page header ── */
 .title {
-  color: var(--text-clr);
-  margin-bottom: 20px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 24px;
 }
 
-.createButton {
-  background-color: var(--accent-clr) !important;
-  color: white !important;
-  border: none !important;
-  padding: 8px 16px !important;
-  border-radius: 4px !important;
-  text-transform: none !important;
-  font-weight: bold !important;
-}
-
-.createButton:hover {
-  background-color: #4b50cc !important;
-}
-
-
+/* ── Dialog sections ── */
 .dialogTitle {
-  background-color: var(--hover-clr);
-  color: var(--text-clr);
+  background-color: var(--raised);
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  padding: 20px 24px 16px;
 }
 
 .dialogContent {
-  background-color: var(--base-clr);
-}
-
-.textField :global(.MuiInputBase-input) {
-  color: var(--text-clr);
-}
-
-.textField :global(.MuiInputLabel-root) {
-  color: var(--secondary-text-clr);
-}
-
-.textField :global(.MuiInputBase-root) {
-  border-color: var(--line-clr);
+  background-color: var(--surface);
+  padding: 20px 24px;
 }
 
 .dialogActions {
-  padding: 8px 24px;
+  background-color: var(--surface);
+  padding: 12px 24px 20px;
+  gap: 8px;
 }
 
-.deleteButton {
-  background-color: var(--hover-clr) !important;
-  color: var(--text-clr) !important;
-  border: none !important;
-  padding: 8px 16px !important;
-  border-radius: 4px !important;
-  text-transform: none !important;
-  font-weight: bold !important;
-  margin: 5px !important;
-}
-
-.deleteButton:hover {
-  background-color: #1a1e2b !important;
+/* ── Buttons ── */
+.createButton {
+  composes: btnAccent from '../../assets/styles/shared.module.css';
 }
 
 .editButton {
-  background-color: var(--accent-clr) !important;
-  color: white !important;
-  border: none !important;
-  padding: 8px 16px !important;
-  border-radius: 4px !important;
-  text-transform: none !important;
-  font-weight: bold !important;
-  margin: 5px !important;
+  composes: btnAccent from '../../assets/styles/shared.module.css';
 }
 
-.editButton:hover {
-  background-color: #4b50cc !important;
-}
-
-.createButton {
-  background-color: var(--accent-clr) !important;
-  color: white !important;
-  border: none !important;
-  padding: 8px 16px !important;
-  border-radius: 4px !important;
-  text-transform: none !important;
-  font-weight: bold !important;
-  justify-content: center !important;
-  align-items: center !important;
+.deleteButton {
+  composes: btnGhost from '../../assets/styles/shared.module.css';
 }

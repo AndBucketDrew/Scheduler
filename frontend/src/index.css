@@ -1,71 +1,282 @@
-:root{
-  --base-clr: #11121a;
-  --line-clr: #42434a;
-  --hover-clr: #222533;
-  --text-clr: #e6e6ef;
-  --accent-clr: #5e63ff;
-  --secondary-text-clr: #b0b3c1;
+/* ============================================================
+   index.css  —  Global foundation
+   Warp-inspired design: warm dark canvas, parchment text,
+   mist borders, purple accent kept.
+   ============================================================ */
+
+:root {
+  /* ── Backgrounds (warm earthy darks — never cold blue-black) ── */
+  --bg:      #0f0e0c;   /* page canvas        */
+  --surface: #191816;   /* cards, panels      */
+  --raised:  #242220;   /* hover, dropdowns   */
+
+  /* ── Borders ── */
+  --border:  rgba(250, 249, 246, 0.1);   /* mist border — semi-transparent */
+
+  /* ── Text ── */
+  --text:    #faf9f6;   /* Warm Parchment — primary   */
+  --text-2:  #afaeac;   /* Ash Gray       — secondary */
+  --text-3:  #868584;   /* Stone Gray     — tertiary  */
+
+  /* ── Accent (purple kept per spec) ── */
+  --accent:    #868584;
+  --accent-dk: #726f6d;
 }
-*{
+
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', sans-serif;
 }
-html{
-  line-height: 1.5rem;
+
+html {
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-body{
+
+body {
   min-height: 100vh;
-  background-color: var(--base-clr);
-  color: var(--text-clr);
-  display: flex;
+  background-color: var(--bg);
+  color: var(--text);
+  display: grid;
   grid-template-columns: auto 1fr;
-  overflow-y: auto;
 }
 
+/* ============================================================
+   Global MUI dark-theme overrides
+   All outlined inputs, selects, labels, tables, dialogs and
+   cards use this app's colour palette.
+   ============================================================ */
 
-
-/* :global(.MuiTableContainer-root) {
-  background-color: var(--base-clr) !important;
-  border: 1px solid var(--line-clr) !important; 
+/* Paper / Card — the most important override (fixes white card bug) */
+.MuiPaper-root {
+  background-color: var(--surface) !important;
+  color: var(--text) !important;
 }
 
-:global(.MuiTable-root) {
-  background-color: var(--base-clr);
-
+/* Input root */
+.MuiOutlinedInput-root {
+  background-color: var(--bg) !important;
+  border-radius: 8px !important;
 }
 
-:global(.MuiTableCell-root) {
-  color: var(--text-clr) !important;
-  border-bottom: 1px solid var(--line-clr) !important;
-  background-color: var(--base-clr) !important;
-
+/* Input border — Warp mist treatment */
+.MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+  border-color: var(--border) !important;
+  transition: border-color 150ms ease;
 }
 
-:global(.MuiTableHead-root .MuiTableCell-root) {
-  background-color: var(--hover-clr) !important;
-
-  color: var(--text-clr) !important;
-  font-weight: 600 !important;
+.MuiOutlinedInput-root:not(.Mui-focused):hover .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(250, 249, 246, 0.25) !important;
 }
 
-:global(.MuiTableBody-root .MuiTableCell-root) {
-  background-color: var(--base-clr) !important;
-
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: var(--accent) !important;
+  border-width: 1px !important;
 }
 
-:global(.MuiTableRow-root) {
-  background-color: var(--base-clr) !important;
-
+/* Input text */
+.MuiInputBase-input,
+.MuiSelect-select {
+  color: var(--text) !important;
 }
 
-:global(.MuiTableRow-root:hover) {
-  background-color: var(--hover-clr) !important;
+/* Label idle */
+.MuiInputLabel-root {
+  color: var(--text-3) !important;
+  font-size: 0.875rem !important;
 }
 
+/* Label focused — was showing MUI blue, now purple */
+.MuiInputLabel-root.Mui-focused {
+  color: var(--accent) !important;
+}
 
-:global(.MuiDialog-paper) {
-  background-color: var(--base-clr) !important;
-  color: var(--text-clr) !important;
-  border: 1px solid var(--line-clr) !important;
-} */
+/* Chevron / icon in selects */
+.MuiSelect-icon {
+  color: var(--text-3) !important;
+}
+
+/* Input adornment icons (e.g. password eye) */
+.MuiInputAdornment-root .MuiSvgIcon-root {
+  color: var(--text-3);
+}
+
+.MuiIconButton-root {
+  color: var(--text-3) !important;
+}
+
+.MuiIconButton-root:hover {
+  background-color: rgba(250, 249, 246, 0.06) !important;
+  color: var(--text-2) !important;
+}
+
+/* Dropdown / select menu */
+.MuiMenu-paper,
+.MuiPopover-paper {
+  background-color: var(--raised) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+  border-radius: 8px !important;
+}
+
+.MuiMenuItem-root {
+  color: var(--text-2) !important;
+  font-size: 0.875rem !important;
+}
+
+.MuiMenuItem-root:hover {
+  background-color: rgba(250, 249, 246, 0.06) !important;
+  color: var(--text) !important;
+}
+
+.MuiMenuItem-root.Mui-selected {
+  background-color: rgba(94, 99, 255, 0.12) !important;
+  color: var(--text) !important;
+}
+
+/* Dialog */
+.MuiDialog-paper {
+  background-color: var(--surface) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.6) !important;
+  border-radius: 12px !important;
+}
+
+/* Tables */
+.MuiTableContainer-root {
+  background-color: var(--bg) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 10px !important;
+}
+
+.MuiTableCell-root {
+  color: var(--text-2) !important;
+  border-bottom: 1px solid var(--border) !important;
+  background-color: var(--bg) !important;
+  font-size: 0.85rem !important;
+}
+
+/* Table head — Warp uppercase label treatment */
+.MuiTableHead-root .MuiTableCell-root {
+  background-color: var(--surface) !important;
+  color: var(--text-3) !important;
+  font-size: 0.7rem !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.12em !important;
+}
+
+.MuiTableRow-root:hover .MuiTableCell-root {
+  background-color: var(--raised) !important;
+  color: var(--text) !important;
+}
+
+/* Circular progress */
+.MuiCircularProgress-root {
+  color: var(--accent) !important;
+}
+
+/* Chip */
+.MuiChip-root {
+  background-color: var(--raised) !important;
+  color: var(--text-2) !important;
+  border: 1px solid var(--border) !important;
+  font-size: 0.75rem !important;
+}
+
+/* Autofill — stop Chrome from flashing yellow/blue */
+.MuiOutlinedInput-root input:-webkit-autofill,
+.MuiOutlinedInput-root input:-webkit-autofill:hover,
+.MuiOutlinedInput-root input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 40px var(--bg) inset !important;
+  -webkit-text-fill-color: var(--text) !important;
+  caret-color: var(--text);
+}
+
+/* datetime-local native icon */
+input[type='datetime-local']::-webkit-calendar-picker-indicator {
+  filter: invert(0.8);
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+/* ============================================================
+   Schedule-X calendar dark-theme overrides
+   calendar.css is imported in main.jsx before index.css, so
+   these :root values reliably overwrite the library's defaults
+   for every user on a fresh npm install.
+   ============================================================ */
+
+:root {
+  /* Surfaces */
+  --sx-color-background:             var(--bg);
+  --sx-color-on-background:          var(--text);
+  --sx-color-surface:                var(--surface);
+  --sx-color-surface-dim:            var(--bg);
+  --sx-color-surface-bright:         var(--raised);
+  --sx-color-on-surface:             var(--text);
+  --sx-color-surface-container:      var(--raised);
+  --sx-color-surface-container-low:  var(--surface);
+  --sx-color-surface-container-high: #2e2b28;
+
+  /* Accent — purple */
+  --sx-color-primary:                var(--accent);
+  --sx-color-on-primary:             #fff;
+  --sx-color-primary-container:      rgba(94, 99, 255, 0.18);
+  --sx-color-on-primary-container:   var(--text);
+
+  /* Secondary / tertiary → warm grays */
+  --sx-color-secondary:              var(--text-3);
+  --sx-color-on-secondary:           var(--bg);
+  --sx-color-secondary-container:    var(--raised);
+  --sx-color-on-secondary-container: var(--text-2);
+  --sx-color-tertiary:               var(--text-2);
+  --sx-color-on-tertiary:            var(--bg);
+  --sx-color-tertiary-container:     var(--raised);
+  --sx-color-on-tertiary-container:  var(--text);
+
+  /* Borders */
+  --sx-color-outline:         rgba(250, 249, 246, 0.14);
+  --sx-color-outline-variant: rgba(250, 249, 246, 0.09);
+  --sx-border:                1px solid rgba(250, 249, 246, 0.09);
+
+  /* Internals */
+  --sx-color-surface-tint:                    var(--accent);
+  --sx-color-shadow:                          #000;
+  --sx-internal-color-text:                   var(--text);
+  --sx-internal-color-gray-ripple-background: var(--raised);
+  --sx-internal-color-light-gray:             var(--surface);
+}
+
+/* Event pills — slight rounding for Warp feel */
+.sx__time-grid-event,
+.sx__month-grid-event,
+.sx__month-agenda-event {
+  border-radius: 6px !important;
+}
+
+/* Scrollbar — subtle Warp style */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(250, 249, 246, 0.15);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(250, 249, 246, 0.25);
+}
