@@ -17,6 +17,7 @@ import NewPassword from './pages/new-password/NewPassword.jsx';
 import NewShift from './pages/new-shift/NewShift.jsx';
 import EditShift from './pages/edit-shifts/EditShifts.jsx';
 import ReviewSwapRequest from './pages/review-swap-request/ReviewSwapRequest.jsx';
+import RespondSwapRequest from './pages/respond-swap-request/RespondSwapRequest.jsx';
 import ManageUsers from './pages/manage-users/ManageUsers.jsx';
 import ManageEvents from './pages/manage-events/ManageEvents.jsx';
 
@@ -63,6 +64,7 @@ function App() {
               <Route path="/shifts/my-shifts" element={<MyShifts />} />
               <Route path="/shifts/all-shifts" element={<AllShifts />} />
               <Route path="/shifts/swap-shift" element={<SwapShifts />} />
+              <Route path="/shifts/respond-swap-request" element={<RespondSwapRequest />} />
               <Route path="/shifts/edit-shift/:id" element={<EditShift />} />
             </Route>
 

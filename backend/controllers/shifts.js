@@ -373,7 +373,58 @@ const approveSwap = async (req, res, next) => {
     }
 };
 
-// Retrieves all pending swap requests
+// Retrieves swap requests waiting for the second user (toMember) to accept/decline
+const getSwapRequestsForMember = async (req, res, next) => {
+    try {
+        const memberId = req.params.id;
+        const swapRequests = await SwapRequest.find({ toMember: memberId, status: 'pending_second_user' })
+            .populate('fromEvent')
+            .populate('toEvent')
+            .populate('requester')
+            .populate('toMember');
+        res.json(swapRequests);
+    } catch (err) {
+        return next(new HttpError('Something went wrong while fetching swap requests', err, 500));
+    }
+};
+
+// Second user accepts or declines a swap request — if accepted it moves to leader review
+const respondToSwap = async (req, res, next) => {
+    try {
+        const { swapRequestId, accept } = req.body;
+        const userId = req.params.id; // Must be the toMember
+
+        const swapRequest = await SwapRequest.findById(swapRequestId);
+        if (!swapRequest) {
+            return next(new HttpError('Swap request not found', null, 404));
+        }
+        if (swapRequest.status !== 'pending_second_user') {
+            return next(new HttpError('This swap request is not awaiting your response', null, 400));
+        }
+        if (swapRequest.toMember.toString() !== userId) {
+            return next(new HttpError('You are not the target member for this swap request', null, 403));
+        }
+
+        if (accept) {
+            // Move to leader review queue
+            swapRequest.status = 'pending';
+        } else {
+            swapRequest.status = 'declined';
+        }
+        swapRequest.updatedAt = Date.now();
+        await swapRequest.save();
+
+        res.json({
+            message: `Swap request ${accept ? 'accepted and sent to leader for review' : 'declined'}`,
+            swapRequest,
+        });
+    } catch (err) {
+        console.error('Error in respondToSwap:', err);
+        return next(new HttpError('Something went wrong while responding to the swap', err, 500));
+    }
+};
+
+// Retrieves swap requests ready for leader review (toMember already accepted)
 const getPendingSwapRequests = async (req, res, next) => {
     try {
         const swapRequests = await SwapRequest.find({ status: 'pending' })
@@ -387,4 +438,4 @@ const getPendingSwapRequests = async (req, res, next) => {
     }
 };
 
-export { getAllEvents, getOneEvent, getAllEventTypes, deleteEventType, updateEventType, createEvent, updateEvent, deleteEvent, getUserEvents, createEventType, requestEventSwap, approveSwap, getPendingSwapRequests };
+export { getAllEvents, getOneEvent, getAllEventTypes, deleteEventType, updateEventType, createEvent, updateEvent, deleteEvent, getUserEvents, createEventType, requestEventSwap, approveSwap, getPendingSwapRequests, getSwapRequestsForMember, respondToSwap };

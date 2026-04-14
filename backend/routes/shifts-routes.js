@@ -1,7 +1,7 @@
 import { Router } from "express";
 import mongoose from "mongoose";
 import { body, param, header } from 'express-validator';
-import { createEvent, createEventType, deleteEvent, getAllEvents, getAllEventTypes, getUserEvents, updateEvent, getOneEvent, requestEventSwap, approveSwap, getPendingSwapRequests, deleteEventType, updateEventType } from "../controllers/shifts.js";
+import { createEvent, createEventType, deleteEvent, getAllEvents, getAllEventTypes, getUserEvents, updateEvent, getOneEvent, requestEventSwap, approveSwap, getPendingSwapRequests, getSwapRequestsForMember, respondToSwap, deleteEventType, updateEventType } from "../controllers/shifts.js";
 
 
 const shiftsRoutes = new Router();
@@ -75,7 +75,23 @@ shiftsRoutes.put(
     updateEventType
 );
 
-shiftsRoutes.get('/pending', getPendingSwapRequests); 
+shiftsRoutes.get('/pending', getPendingSwapRequests);
+
+// Fetch swap requests where the logged-in user is the target (toMember) and hasn't responded yet
+shiftsRoutes.get(
+    '/swap-shift/my-requests/:id',
+    param('id').custom((value) => mongoose.Types.ObjectId.isValid(value)).withMessage('Invalid member ID'),
+    getSwapRequestsForMember
+);
+
+// Route for the second user to accept or decline a swap request
+shiftsRoutes.post(
+    '/swap-shift/respond/:id',
+    param('id').custom((value) => mongoose.Types.ObjectId.isValid(value)).withMessage('Invalid member ID'),
+    body('swapRequestId').notEmpty().custom((value) => mongoose.Types.ObjectId.isValid(value)).withMessage('Valid swapRequest ID is required'),
+    body('accept').isBoolean().withMessage('Accept must be a boolean (true/false)'),
+    respondToSwap
+);
 
 
 shiftsRoutes.post(

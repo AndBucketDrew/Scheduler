@@ -6,6 +6,7 @@ const createEventSlice = (set) => ({
   event: null,
   eventTypes: [],
   swapRequests: [],
+  myPendingSwapRequests: [],
   loading: false,
 
   // Action to fetch events from a specified endpoint
@@ -210,6 +211,43 @@ const createEventSlice = (set) => ({
       console.error('Error requesting swap:', err); 
       set({ loading: false }); 
       return { success: false, message: err.message || 'Failed to create swap request. Please try again.' }; 
+    }
+  },
+
+  // Action to fetch swap requests directed at the logged-in user awaiting their response
+  fetchMyPendingSwapRequests: async (userId) => {
+    try {
+      set({ loading: true });
+      const token = sessionStorage.getItem('lh_token');
+      const response = await fetchAPI({
+        method: 'get',
+        url: `/shifts/swap-shift/my-requests/${userId}`,
+        token,
+      });
+      set({ myPendingSwapRequests: response.data || [], loading: false });
+    } catch (err) {
+      console.error('Error fetching swap requests for member:', err);
+      set({ myPendingSwapRequests: [], loading: false });
+    }
+  },
+
+  // Action for the second user to accept or decline a swap request
+  respondToSwapRequest: async (userId, swapRequestId, accept) => {
+    try {
+      set({ loading: true });
+      const token = sessionStorage.getItem('lh_token');
+      const response = await fetchAPI({
+        method: 'POST',
+        url: `/shifts/swap-shift/respond/${userId}`,
+        data: { swapRequestId, accept },
+        token,
+      });
+      set({ loading: false });
+      return { success: true, message: response.data.message };
+    } catch (err) {
+      console.error('Error responding to swap request:', err);
+      set({ loading: false });
+      return { success: false, message: err.message || 'Failed to respond to swap request.' };
     }
   },
 

@@ -26,9 +26,14 @@ export const NAV_LINKS = Object.freeze([
     icon: <EventRepeatIcon className="navIcon"/>, 
   },
   {
+    label: 'Respond to Swap',
+    to: '/shifts/respond-swap-request',
+    icon: <EventRepeatIcon className="navIcon"/>,
+  },
+  {
     label: 'Review Swap Request',
     to: '/shifts/review-swap-request',
-    icon: <EventRepeatIcon className="navIcon"/>, 
+    icon: <EventRepeatIcon className="navIcon"/>,
   },
   {
     label: 'Manage Event Types',
