@@ -11,6 +11,24 @@
       "use": "@vercel/node"
     }
   ],
+  "headers": [
+    {
+      "source": "/members(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "https://scheduler-eight-psi.vercel.app" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET,POST,PUT,PATCH,DELETE,OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type,Authorization" }
+      ]
+    },
+    {
+      "source": "/shifts(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "https://scheduler-eight-psi.vercel.app" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET,POST,PUT,PATCH,DELETE,OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type,Authorization" }
+      ]
+    }
+  ],
   "routes": [
     {
       "src": "/members(.*)",
