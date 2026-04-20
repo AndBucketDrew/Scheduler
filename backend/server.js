@@ -17,7 +17,9 @@ const CONNECTION = `mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PW}@wifi.sm6wh.m
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: process.env.CORS_ORIGIN?.split(',') || '*',
+}));
 
 // Middleware to parse incoming requests
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
