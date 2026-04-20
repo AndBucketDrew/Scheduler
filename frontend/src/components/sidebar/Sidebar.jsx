@@ -3,10 +3,12 @@ import { NavLink } from 'react-router-dom';
 import { NAV_LINKS } from '../../constants/navLinks.jsx';
 import styles from './sidebar.module.css';
 import LogoutIcon from '@mui/icons-material/Logout';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import useStore from '../../hooks/useStore.js';
+import { fetchAPI } from '../../utils/index.js';
 
 const Sidebar = () => {
-  const { memberLogout } = useStore((state) => state);
+  const { memberLogout, loggedInMember, token } = useStore((state) => state);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [openSubMenu, setOpenSubMenu] = useState(null);
 
@@ -23,8 +25,18 @@ const Sidebar = () => {
   };
 
   const handleLogout = () => {
-    memberLogout()
-  }
+    memberLogout();
+  };
+
+  const handleRunWeeklyJob = async () => {
+    try {
+      await fetchAPI({ method: 'post', url: '/shifts/trigger-weekly-job', token });
+      alert('Weekly job ran successfully!');
+    } catch (err) {
+      alert('Weekly job failed. Check the console.');
+      console.error(err);
+    }
+  };
 
   return (
     <nav className={`${styles.sidebar} ${isSidebarOpen ? '' : styles.close}`}>
@@ -84,6 +96,14 @@ const Sidebar = () => {
           </li>
         ))}
         <br />
+        {loggedInMember?.role === 'super-admin' && (
+          <li>
+            <button onClick={handleRunWeeklyJob} className={styles.dropdownbtn}>
+              <PlayArrowIcon />
+              <span>Run Weekly Job</span>
+            </button>
+          </li>
+        )}
         <li>
           <button onClick={handleLogout} className={styles.dropdownbtn}>
             <LogoutIcon />
