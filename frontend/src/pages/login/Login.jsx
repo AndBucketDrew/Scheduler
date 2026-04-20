@@ -33,7 +33,7 @@ const Login = () => {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const { formState, handleFormChange } = useForm({ email: '', password: '' });
+  const { formState, handleFormChange } = useForm({ email: 'admin@example.com', password: '123123' });
 
   const navigate = useNavigate();
 

@@ -2,6 +2,7 @@ import { Router } from "express";
 import mongoose from "mongoose";
 import { body, param, header } from 'express-validator';
 import { createEvent, createEventType, deleteEvent, getAllEvents, getAllEventTypes, getUserEvents, updateEvent, getOneEvent, requestEventSwap, approveSwap, getPendingSwapRequests, getSwapRequestsForMember, respondToSwap, deleteEventType, updateEventType } from "../controllers/shifts.js";
+import { runWeeklyShiftJob } from "../jobs/weeklyShifts.js";
 
 
 const shiftsRoutes = new Router();
@@ -76,6 +77,16 @@ shiftsRoutes.put(
 );
 
 shiftsRoutes.get('/pending', getPendingSwapRequests);
+
+// Manual trigger for the weekly shift job (dev/testing only)
+shiftsRoutes.post('/trigger-weekly-job', async (req, res) => {
+    try {
+        await runWeeklyShiftJob();
+        res.json({ message: 'Weekly shift job ran successfully.' });
+    } catch (err) {
+        res.status(500).json({ message: 'Job failed.', error: err.message });
+    }
+});
 
 // Fetch swap requests where the logged-in user is the target (toMember) and hasn't responded yet
 shiftsRoutes.get(

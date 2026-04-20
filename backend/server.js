@@ -4,6 +4,7 @@ import cors from "cors";
 import mongoose from 'mongoose';
 import shiftsRoutes from './routes/shifts-routes.js';
 import membersRoutes from './routes/members-routes.js';
+import { scheduleWeeklyShiftJob } from './jobs/weeklyShifts.js';
 
 dotenv.config();
 
@@ -30,9 +31,11 @@ app.use('/axios', express.static('node_modules/axios/dist')); // Serve axios lib
 app.use('/members', membersRoutes); 
 app.use('/shifts', shiftsRoutes);
 
-mongoose.connect(CONNECTION).catch((err) => {
-    console.log("MongoDB connection error", err);
-});
+mongoose.connect(CONNECTION)
+    .then(() => scheduleWeeklyShiftJob())
+    .catch((err) => {
+        console.log("MongoDB connection error", err);
+    });
 
 // For local dev
 if (process.env.NODE_ENV !== 'production') {
