@@ -1,5 +1,7 @@
 # SchedulerApp
 
+This was a school project with a 1.5 month deadline.
+
 A full-stack shift scheduling and workforce management application. Built to handle shift creation, team member management, and a shift swap approval workflow with role-based access control throughout.
 
 ---
@@ -54,6 +56,8 @@ The `ProtectedRoute` component enforces permission requirements at the route lev
 - Event type deletion cascades and removes all associated shifts. Id like the behavior to be deassign rather than delete
 - Email notifications via nodemailer are configured but not wired into any workflow
 - The JWT secret is currently stored in a committed `.env` file because this was a school project.
+- There are lots of console.logs() left in the code which is not secure.
+- Frontend styling needs work
 
 ---
 
