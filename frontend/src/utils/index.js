@@ -6,7 +6,7 @@ const fetchAPI = (options = {}) => {
 
   const defaultConfig = {
     method: 'get',
-    timeout: 5000, 
+    timeout: 15000, 
     data: {}, 
     url: '/', 
     baseURL: import.meta.env.VITE_API_URL || 'http://localhost:8000/',
