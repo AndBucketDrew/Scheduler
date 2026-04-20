@@ -30,11 +30,13 @@ app.use('/axios', express.static('node_modules/axios/dist')); // Serve axios lib
 app.use('/members', membersRoutes); 
 app.use('/shifts', shiftsRoutes);
 
-// Connect to MongoDB and start the server
-mongoose.connect(CONNECTION).then(() => {
-    app.listen(PORT, () => {
-        console.log(`http://localhost:8080`);
-    });
-}).catch((err) => {
-    console.log("Error on startup", err);
+mongoose.connect(CONNECTION).catch((err) => {
+    console.log("MongoDB connection error", err);
 });
+
+// For local dev
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT || 8000, () => console.log(`http://localhost:${PORT || 8000}`));
+}
+
+export default app;
