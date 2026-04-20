@@ -17,9 +17,9 @@ function getMondayOfCurrentWeek() {
 
 // Shift definitions relative to Monday (dayOffset 0=Mon, 2=Wed, 4=Fri)
 const SHIFT_DEFS = [
-    { dayOffset: 0, startHour: 8, endHour: 16, label: 'Monday morning' },
-    { dayOffset: 2, startHour: 8, endHour: 16, label: 'Wednesday morning' },
-    { dayOffset: 4, startHour: 8, endHour: 16, label: 'Friday morning' },
+    { dayOffset: 0, startHour: 6, endHour: 14, label: 'Monday morning' },
+    { dayOffset: 2, startHour: 7, endHour: 15, label: 'Wednesday morning' },
+    { dayOffset: 4, startHour: 5, endHour: 13, label: 'Friday morning' },
 ];
 
 export async function runWeeklyShiftJob() {

@@ -47,7 +47,7 @@ const Login = () => {
     if (result.requiresPasswordSetup) {
       navigate('/members/new-password', { state: { memberId: result.memberId } });
     } else if (result) {
-      navigate('/shifts/my-shifts');
+      navigate('/shifts/all-shifts');
     } else {
       setMessage('Login failed. Please check your credentials.');
     }
