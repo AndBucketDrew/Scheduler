@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import useStore from '../../hooks/useStore.js';
 import useForm from '../../hooks/useForm.js';
-import styles from './SwapShifts.module.css';
+import styles from './swapShifts.module.css';
 import sharedStyles from '../../assets/styles/shared.module.css';
 
 const SwapShifts = () => {
