@@ -28,8 +28,8 @@ app.use(express.json()); // Parse JSON bodies
 app.use('/axios', express.static('node_modules/axios/dist')); // Serve axios library statically
 
 // ROUTES
-app.use('/api/members', membersRoutes);
-app.use('/api/shifts', shiftsRoutes);
+app.use('/members', membersRoutes);
+app.use('/shifts', shiftsRoutes);
 
 mongoose.connect(CONNECTION)
     .then(() => scheduleWeeklyShiftJob())
