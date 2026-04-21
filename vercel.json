@@ -13,7 +13,7 @@
   ],
   "headers": [
     {
-      "source": "/members(.*)",
+      "source": "/api/members(.*)",
       "headers": [
         { "key": "Access-Control-Allow-Origin", "value": "https://scheduler-eight-psi.vercel.app" },
         { "key": "Access-Control-Allow-Methods", "value": "GET,POST,PUT,PATCH,DELETE,OPTIONS" },
@@ -21,7 +21,7 @@
       ]
     },
     {
-      "source": "/shifts(.*)",
+      "source": "/api/shifts(.*)",
       "headers": [
         { "key": "Access-Control-Allow-Origin", "value": "https://scheduler-eight-psi.vercel.app" },
         { "key": "Access-Control-Allow-Methods", "value": "GET,POST,PUT,PATCH,DELETE,OPTIONS" },
@@ -31,11 +31,11 @@
   ],
   "routes": [
     {
-      "src": "/members(.*)",
+      "src": "/api/members(.*)",
       "dest": "backend/server.js"
     },
     {
-      "src": "/shifts(.*)",
+      "src": "/api/shifts(.*)",
       "dest": "backend/server.js"
     },
     {

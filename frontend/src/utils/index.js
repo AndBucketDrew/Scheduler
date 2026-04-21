@@ -20,6 +20,7 @@ const fetchAPI = (options = {}) => {
   const axiosConfig = {
     ...defaultConfig,
     ...options,
+    url: `/api${options.url || '/'}`,
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded', 
       ...(options.token ? { Authorization: 'Bearer ' + options.token } : {}), 
